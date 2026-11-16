@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#161912">
+<meta property="og:title" content="С днём рождения, папа!">
+<meta property="og:description" content="Поздравление для Чингиза Айтматова от сына Самандара. 17 ноября.">
+<title>С днём рождения, папа!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=PT+Sans:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#161912;
+  --panel:#21261b;
+  --line:#3a4231;
+  --ink:#efe9d6;
+  --muted:#a6a48c;
+  --brass:#e8a93a;
+  --brass-deep:#a96f17;
+  --signal:#c9442c;
+  --paper:#ebe3cb;
+  --paper-ink:#2b2a22;
+  --f-display:"Russo One","Arial Black",Impact,sans-serif;
+  --f-body:"PT Sans","Segoe UI",Roboto,sans-serif;
+  --f-letter:"PT Serif",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --f-hand:"Caveat","Segoe Script",cursive;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(232,169,58,.13), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 1px, transparent 1px 48px),
+    var(--bg);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  overflow-x:hidden;
+}
+.wrap{max-width:540px;margin:0 auto;padding:0 18px;position:relative;z-index:2}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0}
+p{margin:0}
+
+#bg{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.beam{
+  position:fixed;bottom:-4vh;width:46vmax;height:125vh;pointer-events:none;z-index:1;
+  background:linear-gradient(to top,rgba(255,226,160,.16),rgba(255,226,160,.05) 45%,rgba(255,226,160,0) 85%);
+  clip-path:polygon(0 0,100% 0,53% 100%,47% 100%);
+  transform-origin:50% 100%;filter:blur(5px);mix-blend-mode:screen;
+}
+.beam.l{left:-14vmax;animation:sweepL 13s ease-in-out infinite alternate}
+.beam.r{right:-14vmax;animation:sweepR 17s ease-in-out infinite alternate}
+@keyframes sweepL{from{transform:rotate(-4deg)}to{transform:rotate(26deg)}}
+@keyframes sweepR{from{transform:rotate(6deg)}to{transform:rotate(-24deg)}}
+.fog{
+  position:fixed;left:-30%;right:-30%;bottom:-6vh;height:42vh;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(40% 55% at 25% 80%,rgba(150,145,120,.13),transparent 70%),
+    radial-gradient(35% 50% at 70% 85%,rgba(150,145,120,.11),transparent 70%),
+    radial-gradient(30% 45% at 50% 100%,rgba(232,169,58,.07),transparent 70%);
+  animation:drift 26s ease-in-out infinite alternate;
+}
+@keyframes drift{from{transform:translateX(-7%)}to{transform:translateX(7%)}}
+
+.shake{animation:shake .45s ease-out}
+@keyframes shake{
+  0%,100%{transform:translate(0,0)}
+  15%{transform:translate(-5px,2px)}
+  30%{transform:translate(4px,-2px)}
+  45%{transform:translate(-3px,1px)}
+  60%{transform:translate(2px,-1px)}
+  80%{transform:translate(-1px,0)}
+}
+
+.hud{display:flex;gap:8px;flex-wrap:wrap;padding:16px 0 0}
+.chip{
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.02em;
+  border:1px solid var(--line);background:rgba(33,38,27,.8);
+  padding:5px 9px;border-radius:3px;color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.chip b{color:var(--ink);font-weight:700}
+
+.hero{padding:26px 0 8px;display:grid;gap:16px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.hero h1{font-size:clamp(42px,12.5vw,66px);line-height:.98;letter-spacing:-.01em;text-transform:uppercase}
+.hero h1 span{color:var(--brass);text-shadow:0 0 28px rgba(232,169,58,.35)}
+.garage{position:relative;margin:4px -6px 0}
+.garage::after{content:"";position:absolute;left:4%;right:4%;bottom:6px;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.tank{width:100%;height:auto;display:block;overflow:visible}
+.tank .rig{transform-box:fill-box;transform-origin:50% 100%;animation:idle 1.6s ease-in-out infinite}
+@keyframes idle{50%{transform:translateY(.6px)}}
+.tank #flash{opacity:0;transform-box:fill-box;transform-origin:0% 50%}
+.tank.firing #gun{animation:recoil .5s ease-out}
+.tank.firing #flash{animation:flash .4s ease-out}
+.tank.firing .rig{animation:rock .6s ease-out}
+@keyframes recoil{0%{transform:translateX(0)}12%{transform:translateX(-16px)}100%{transform:translateX(0)}}
+@keyframes flash{0%{opacity:1;transform:scale(.3)}35%{opacity:1;transform:scale(1.25)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes rock{0%{transform:rotate(0)}15%{transform:rotate(-1.6deg)}45%{transform:rotate(.6deg)}100%{transform:rotate(0)}}
+
+.plate{
+  display:flex;align-items:center;gap:14px;
+  background:linear-gradient(180deg,#262c1f,#1d2217);
+  border:1px solid var(--line);border-left:3px solid var(--brass);
+  padding:12px 14px;border-radius:3px;
+}
+.tier{font-family:var(--f-display);font-size:22px;color:var(--brass);min-width:64px;text-align:center;line-height:1;border-right:1px solid var(--line);padding-right:12px}
+.tier small{display:block;font-family:var(--f-mono);font-size:10px;color:var(--muted);margin-top:5px;letter-spacing:.08em}
+.plate b{font-family:var(--f-display);font-weight:400;font-size:22px;display:block;line-height:1.15}
+
+.battle{
+  appearance:none;border:0;cursor:pointer;width:100%;
+  font-family:var(--f-display);font-size:30px;letter-spacing:.06em;text-transform:uppercase;
+  color:#2a1a04;
+  background:linear-gradient(180deg,#ffcf6b 0%,var(--brass) 45%,#c9801c 100%);
+  padding:18px 20px;border-radius:4px;
+  box-shadow:0 0 0 1px #6e4610 inset,0 2px 0 rgba(255,255,255,.35) inset,0 10px 30px rgba(232,169,58,.28);
+  animation:pulse 2.4s ease-in-out infinite;
+  -webkit-tap-highlight-color:transparent;transition:transform .08s;
+}
+.battle:active{transform:translateY(2px) scale(.99)}
+.battle:focus-visible,.salvo:focus-visible,.player:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@keyframes pulse{50%{box-shadow:0 0 0 1px #6e4610 inset,0 2px 0 rgba(255,255,255,.35) inset,0 10px 44px rgba(232,169,58,.5)}}
+.hint{font-size:14px;color:var(--muted);text-align:center;margin-top:-6px}
+
+.block{padding:44px 0 4px;display:grid;gap:18px}
+.sec-head{display:grid;gap:8px}
+.tag{justify-self:start;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);border:1px solid rgba(232,169,58,.45);padding:3px 8px;border-radius:2px;background:rgba(22,25,18,.6)}
+.sec-head h2{font-size:27px;line-height:1.1}
+
+.letter{
+  position:relative;background:var(--paper);color:var(--paper-ink);
+  font-family:var(--f-letter);font-size:17.5px;line-height:1.68;
+  padding:56px 22px 26px;border-radius:3px;
+  box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 18px 40px rgba(0,0,0,.45);
+  background-image:repeating-linear-gradient(0deg,rgba(43,42,34,.06) 0 1px,transparent 1px 29.4px);
+  display:grid;gap:14px;
+}
+.stamp{position:absolute;top:16px;right:14px;transform:rotate(7deg);border:2px solid var(--signal);color:var(--signal);font-family:var(--f-display);font-size:11px;letter-spacing:.14em;padding:4px 8px;border-radius:3px;opacity:.85}
+.letter .to{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;position:absolute;top:20px;left:22px;color:#6b6852}
+.letter strong{font-weight:700}
+.sign{font-family:var(--f-hand);font-size:34px;line-height:1.1;color:#24375e;margin-top:6px}
+
+.medals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.medal{background:rgba(33,38,27,.92);border:1px solid var(--line);border-radius:4px;padding:14px 12px 16px;display:grid;justify-items:center;align-content:start;gap:8px;text-align:center}
+.medal svg{width:78px;height:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+.medal h3{font-size:15px;line-height:1.2}
+.medal p{font-size:14px;color:var(--muted);line-height:1.4}
+
+.orders{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:o}
+.orders li{counter-increment:o;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;background:rgba(33,38,27,.92);border:1px solid var(--line);padding:14px 16px;border-radius:4px}
+.orders li::before{content:counter(o,decimal-leading-zero);grid-row:span 2;font-family:var(--f-display);font-size:24px;color:var(--brass);line-height:1.1;font-variant-numeric:tabular-nums}
+.orders b{font-family:var(--f-display);font-weight:400;font-size:17px;line-height:1.25}
+.orders span{font-size:15.5px;color:var(--muted)}
+
+.victory{
+  margin-top:48px;text-align:center;display:grid;gap:16px;justify-items:center;
+  padding:34px 18px 30px;border:1px solid var(--line);border-radius:4px;
+  background:radial-gradient(80% 70% at 50% 0%,rgba(232,169,58,.2),transparent 70%),rgba(33,38,27,.94);
+}
+.victory .big{
+  font-family:var(--f-display);font-size:clamp(50px,15vw,76px);line-height:1;letter-spacing:.04em;
+  background:linear-gradient(180deg,#fff0c4,var(--brass) 55%,#b9781a);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 18px rgba(232,169,58,.35));
+}
+.victory .sub{font-family:var(--f-mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.results{width:100%;max-width:360px;margin:0;display:grid;text-align:left}
+.results div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.results dt{color:var(--muted);font-size:15px}
+.results dd{margin:0;font-family:var(--f-mono);font-size:14px;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.dedic{font-family:var(--f-display);font-size:22px;line-height:1.3;max-width:24ch}
+.dedic span{color:var(--brass)}
+.victory .sign{color:var(--brass);font-size:38px}
+.salvo{appearance:none;cursor:pointer;font-family:var(--f-display);font-size:16px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--brass);border:2px solid var(--brass);padding:12px 22px;border-radius:4px;-webkit-tap-highlight-color:transparent}
+.salvo:active{background:rgba(232,169,58,.12)}
+
+footer{padding:28px 0 96px;text-align:center;font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+.dock{
+  position:fixed;z-index:60;
+  right:calc(14px + env(safe-area-inset-right));
+  bottom:calc(18px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:10px;
+}
+.dock-label{
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink);
+  background:rgba(22,25,18,.92);border:1px solid var(--line);padding:6px 10px;border-radius:3px;
+  transition:opacity .4s,transform .4s;
+}
+.dock.on .dock-label{opacity:0;transform:translateX(8px);pointer-events:none}
+.player{
+  position:relative;width:60px;height:60px;border-radius:50%;cursor:pointer;
+  appearance:none;border:2px solid var(--brass);color:var(--brass);
+  background:radial-gradient(circle at 50% 35%,#323a26,#14170f 75%);
+  box-shadow:0 8px 24px rgba(0,0,0,.55),0 0 0 4px rgba(22,25,18,.75);
+  display:grid;place-items:center;-webkit-tap-highlight-color:transparent;
+}
+.player::before{
+  content:"";position:absolute;inset:-9px;border-radius:50%;
+  border:2px dashed rgba(232,169,58,.55);opacity:0;transition:opacity .3s;
+}
+.dock.on .player::before{opacity:1;animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.player svg{width:24px;height:24px;display:block}
+.player .i-pause,.dock.on .player .i-play{display:none}
+.dock.on .player .i-pause{display:block}
+.eq{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);display:flex;gap:2px;height:8px;align-items:flex-end;opacity:0}
+.dock.on .eq{opacity:1}
+.eq i{width:3px;background:var(--brass);height:3px;animation:eq .7s ease-in-out infinite alternate}
+.eq i:nth-child(2){animation-delay:.2s}
+.eq i:nth-child(3){animation-delay:.4s}
+@keyframes eq{to{height:8px}}
+.dock.on .player svg{transform:translateY(-3px)}
+
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+@media (min-width:600px){
+  body{font-size:18px}
+  .medals{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="beam l" aria-hidden="true"></div>
+<div class="beam r" aria-hidden="true"></div>
+<div class="fog" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<main class="wrap" id="page">
+
+  <div class="hud" aria-label="Сводка">
+    <span class="chip">Дата: <b>17.11</b></span>
+    <span class="chip">Опыт: <b>43 года</b></span>
+  </div>
+
+  <section class="hero">
+    <p class="eyebrow">Боевая задача: поздравить командира</p>
+    <h1>С днём рождения, <span>папа!</span></h1>
+
+    <div class="garage">
+      <svg class="tank" id="tank" viewBox="0 0 410 180" role="img" aria-label="Танк с номером 17·11 на башне">
+        <defs>
+          <linearGradient id="hullG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#6f7e4a"/>
+            <stop offset="1" stop-color="#46522f"/>
+          </linearGradient>
+          <linearGradient id="turG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7f8f57"/>
+            <stop offset="1" stop-color="#53613a"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="180" cy="162" rx="168" ry="9" fill="rgba(0,0,0,.45)"/>
+        <g class="rig">
+          <rect x="34" y="114" width="268" height="42" rx="21" fill="#22261c" stroke="#10120c" stroke-width="2"/>
+          <rect x="37" y="117" width="262" height="36" rx="18" fill="none" stroke="#3a4030" stroke-width="4" stroke-dasharray="6 5"/>
+          <g fill="#4a5240" stroke="#262a1f" stroke-width="2">
+            <circle cx="60" cy="135" r="14"/><circle cx="94" cy="135" r="14"/><circle cx="128" cy="135" r="14"/>
+            <circle cx="162" cy="135" r="14"/><circle cx="196" cy="135" r="14"/><circle cx="230" cy="135" r="14"/>
+            <circle cx="264" cy="135" r="14"/>
+          </g>
+          <g fill="#262a1f">
+            <circle cx="60" cy="135" r="5"/><circle cx="94" cy="135" r="5"/><circle cx="128" cy="135" r="5"/>
+            <circle cx="162" cy="135" r="5"/><circle cx="196" cy="135" r="5"/><circle cx="230" cy="135" r="5"/>
+            <circle cx="264" cy="135" r="5"/>
+          </g>
+          <path d="M24 116 L48 90 L304 90 L326 108 L316 116 Z" fill="url(#hullG)"/>
+          <path d="M48 90 L304 90" stroke="#8d9b68" stroke-width="2"/>
+          <rect x="38" y="102" width="272" height="14" fill="#4a5631"/>
+          <g fill="#2f3720">
+            <circle cx="56" cy="109" r="1.8"/><circle cx="100" cy="109" r="1.8"/><circle cx="144" cy="109" r="1.8"/>
+            <circle cx="188" cy="109" r="1.8"/><circle cx="232" cy="109" r="1.8"/><circle cx="276" cy="109" r="1.8"/>
+          </g>
+          <ellipse cx="90" cy="98" rx="22" ry="4" fill="#3c4628" opacity=".6"/>
+          <ellipse cx="250" cy="97" rx="18" ry="3.5" fill="#3c4628" opacity=".6"/>
+          <g id="gun">
+            <rect x="254" y="67" width="100" height="9" rx="2" fill="#47532f"/>
+            <rect x="290" y="64" width="22" height="15" rx="4" fill="#55623a"/>
+            <rect id="muzzle" x="350" y="63" width="16" height="17" rx="2" fill="#3c4628"/>
+            <rect x="238" y="61" width="20" height="22" rx="3" fill="#56643b"/>
+            <g id="flash">
+              <ellipse cx="386" cy="71.5" rx="22" ry="11" fill="#ffc45c"/>
+              <ellipse cx="380" cy="71.5" rx="12" ry="6.5" fill="#fff4d2"/>
+            </g>
+          </g>
+          <path d="M104 90 L116 62 Q120 55 129 54 L206 51 Q223 51 233 60 L247 90 Z" fill="url(#turG)"/>
+          <ellipse cx="200" cy="70" rx="16" ry="5" fill="#4a5631" opacity=".55"/>
+          <rect x="140" y="41" width="36" height="14" rx="4" fill="#5b6a3e"/>
+          <line x1="152" y1="41" x2="130" y2="5" stroke="#8b916f" stroke-width="1.6"/>
+          <path d="M130 5 L150 9.5 L130 15 Z" fill="#e8a93a"/>
+          <text x="152" y="82" font-family="Russo One, Arial Black, sans-serif" font-size="16" fill="#ebe3cb" opacity=".88">17·11</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="plate">
+      <div class="tier">XLIII<small>УРОВЕНЬ</small></div>
+      <b>Чингиз Айтматов</b>
+    </div>
+
+    <button class="battle" id="fire" type="button">В бой!</button>
+    <p class="hint">Нажми, чтобы дать праздничный залп</p>
+  </section>
+
+  <section class="block" id="letter">
+    <div class="sec-head">
+      <span class="tag">Донесение</span>
+      <h2>Письмо командиру</h2>
+    </div>
+    <article class="letter">
+      <span class="to">Кому: папе</span>
+      <span class="stamp">ЛИЧНО В РУКИ</span>
+      <p><strong>Пап,</strong></p>
+      <p>ты всегда был строгим. Раньше я не всегда понимал зачем, а сейчас понимаю. Именно благодаря этому я вырос спокойным, умею думать головой, рассуждать логически и критически смотреть на вещи. Не ныть, а разбираться.</p>
+      <p>Ты поддерживал меня по-своему, без лишних слов, но всегда. Когда мне было по-настоящему тяжело, ты помогал. И при этом научил меня во многом справляться самому.</p>
+      <p>Благодаря твоей любви к играм у меня с малых лет был компьютер. Из этого выросло то, кем я становлюсь: я хорошо разбираюсь в компьютерах и учусь на разработчика программного обеспечения. Этот сайт я сделал сам, для тебя.</p>
+      <p>Ты внёс огромный вклад в то, каким я стал. Я — это я, благодаря тебе. Спасибо тебе за всё.</p>
+      <p>С днём рождения, пап!</p>
+      <p class="sign">Твой сын, Самандар</p>
+    </article>
+  </section>
+
+  <section class="block" id="medals">
+    <div class="sec-head">
+      <span class="tag">Награды</span>
+      <h2>Заслуженные медали</h2>
+    </div>
+    <div class="medals" id="medal-grid"></div>
+  </section>
+
+  <section class="block" id="orders">
+    <div class="sec-head">
+      <span class="tag">Приказ</span>
+      <h2>Задачи на новый год службы</h2>
+    </div>
+    <ol class="orders">
+      <li><b>Броня крепче любого сверхтяжа</b><span>Крепкого здоровья тебе, пап. Это главное.</span></li>
+      <li><b>Зелёный винрейт во всём</b><span>Чтобы каждое дело, за которое берёшься, заканчивалось победой.</span></li>
+      <li><b>Рандом всегда на твоей стороне</b><span>Удачи и в жизни, и в каждом бою.</span></li>
+      <li><b>Спокойный ангар</b><span>Больше отдыха, меньше забот и нервов.</span></li>
+      <li><b>Экипаж всегда рядом</b><span>Семья, которая любит тебя и гордится тобой.</span></li>
+      <li><b>Компьютер без поломок</b><span>А если что-то сломается, мастера вызывать не придётся. У тебя есть я.</span></li>
+    </ol>
+  </section>
+
+  <section class="victory" id="win">
+    <p class="sub">Бой окончен</p>
+    <p class="big">ПОБЕДА!</p>
+    <dl class="results">
+      <div><dt>Опыт</dt><dd>+1 год</dd></div>
+      <div><dt>Уровень</dt><dd>XLIII · 43</dd></div>
+      <div><dt>Благодарность сына</dt><dd>без лимита</dd></div>
+      <div><dt>Звание</dt><dd>Лучший папа</dd></div>
+    </dl>
+    <p class="dedic">Айтматов Чингиз Камилжанович — <span>мой папа, моя гордость.</span></p>
+    <p class="sign">Самандар</p>
+    <button class="salvo" id="salvo" type="button">Дать ещё залп</button>
+  </section>
+
+  <footer>Сделано Самандаром для папы · 17 ноября 2026</footer>
+</main>
+
+<div class="dock" id="dock">
+  <span class="dock-label">Включи музыку</span>
+  <button class="player" id="music" type="button" aria-pressed="false" aria-label="Включить праздничный марш">
+    <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+    <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6.5" y="5.5" width="4" height="13" rx="1"/><rect x="13.5" y="5.5" width="4" height="13" rx="1"/></svg>
+    <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var medals = [
+    {n:'Главный калибр', t:'За самый большой вклад в то, каким я вырос', shape:'star', icon:'star', r:['#b8402a','#e8a93a'], metal:'gold'},
+    {n:'Стальная броня', t:'За строгость, благодаря которой я не вырос нытиком', shape:'shield', icon:'chev', r:['#5f6d80','#c9cfd6'], metal:'silver'},
+    {n:'Надёжный тыл', t:'За поддержку, когда мне было по-настоящему тяжело', shape:'round', icon:'heart', r:['#7a2a22','#d9c8a0'], metal:'gold'},
+    {n:'Наставник', t:'За то, что научил справляться самому', shape:'round', icon:'check', r:['#2f4a6b','#e8a93a'], metal:'silver'},
+    {n:'Точный прицел', t:'За мудрость и умение всегда видеть главное', shape:'star', icon:'aim', r:['#3f5a2e','#e8a93a'], metal:'gold'},
+    {n:'Гордость', t:'Ты гордишься мной. А я горжусь тобой', shape:'shield', icon:'1', r:['#b8402a','#efe9d6'], metal:'gold'}
+  ];
+
+  function starPts(cx, cy, R, r, n){
+    var p = [];
+    for (var i = 0; i < n * 2; i++){
+      var a = Math.PI / n * i - Math.PI / 2;
+      var rad = i % 2 ? r : R;
+      p.push((cx + Math.cos(a) * rad).toFixed(1) + ',' + (cy + Math.sin(a) * rad).toFixed(1));
+    }
+    return p.join(' ');
+  }
+
+  function medalSVG(m, i){
+    var g = 'mg' + i;
+    var stops = m.metal === 'silver'
+      ? '<stop offset="0" stop-color="#f6f7f8"/><stop offset=".55" stop-color="#b9c0c8"/><stop offset="1" stop-color="#6c7580"/>'
+      : '<stop offset="0" stop-color="#ffe7a8"/><stop offset=".55" stop-color="#e8a93a"/><stop offset="1" stop-color="#9c6414"/>';
+    var edge = m.metal === 'silver' ? '#5b636d' : '#7d4f10';
+    var ink = m.metal === 'silver' ? '#2c3138' : '#3b280a';
+    var body;
+    if (m.shape === 'star') body = '<polygon points="' + starPts(50, 72, 31, 23, 12) + '" fill="url(#' + g + ')" stroke="' + edge + '" stroke-width="1.5"/><circle cx="50" cy="72" r="18" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>';
+    else if (m.shape === 'shield') body = '<path d="M50 43 L77 51 L75 78 Q71 95 50 103 Q29 95 25 78 L23 51 Z" fill="url(#' + g + ')" stroke="' + edge + '" stroke-width="1.5"/><path d="M50 50 L70 56 L68 77 Q65 89 50 95 Q35 89 32 77 L30 56 Z" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>';
+    else body = '<circle cx="50" cy="72" r="27" fill="url(#' + g + ')" stroke="' + edge + '" stroke-width="1.5"/><circle cx="50" cy="72" r="21" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>';
+    var icon;
+    if (m.icon === 'star') icon = '<polygon points="' + starPts(50, 72, 11, 4.6, 5) + '" fill="' + ink + '"/>';
+    else if (m.icon === 'heart') icon = '<path d="M50 82 C36 72 38 60 45 60 C48 60 50 63 50 63 C50 63 52 60 55 60 C62 60 64 72 50 82 Z" fill="' + ink + '"/>';
+    else if (m.icon === 'chev') icon = '<g fill="none" stroke="' + ink + '" stroke-width="3.6" stroke-linejoin="round"><path d="M40 61 L50 68 L60 61"/><path d="M40 68 L50 75 L60 68"/><path d="M40 75 L50 82 L60 75"/></g>';
+    else if (m.icon === 'check') icon = '<path d="M39 72 L47 80 L62 63" fill="none" stroke="' + ink + '" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>';
+    else if (m.icon === 'aim') icon = '<g fill="none" stroke="' + ink + '" stroke-width="2.6" stroke-linecap="round"><circle cx="50" cy="72" r="9"/><path d="M50 58 V65 M50 79 V86 M36 72 H43 M57 72 H64"/></g><circle cx="50" cy="72" r="2.4" fill="' + ink + '"/>';
+    else icon = '<text x="50" y="78.5" text-anchor="middle" font-family="Russo One, Arial Black, sans-serif" font-size="20" fill="' + ink + '">' + m.icon + '</text>';
+    return '<svg viewBox="0 0 100 108" aria-hidden="true"><defs><radialGradient id="' + g + '" cx=".35" cy=".3" r=".8">' + stops + '</radialGradient></defs>' +
+      '<path d="M32 0 H68 V40 L50 52 L32 40 Z" fill="' + m.r[0] + '"/>' +
+      '<rect x="44" y="0" width="12" height="44" fill="' + m.r[1] + '"/>' +
+      '<rect x="32" y="0" width="36" height="3" fill="rgba(0,0,0,.25)"/>' +
+      body + icon + '</svg>';
+  }
+
+  document.getElementById('medal-grid').innerHTML = medals.map(function(m, i){
+    return '<div class="medal">' + medalSVG(m, i) + '<h3>' + m.n + '</h3><p>' + m.t + '</p></div>';
+  }).join('');
+
+  var AC = window.AudioContext || window.webkitAudioContext;
+  var ac = null, master, sfx, noiseBuf;
+
+  function audio(){
+    if (!AC) return null;
+    if (!ac){
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch(e){}
+      ac = new AC();
+      var comp = ac.createDynamicsCompressor();
+      comp.threshold.value = -12; comp.ratio.value = 4; comp.attack.value = .003; comp.release.value = .2;
+      master = ac.createGain(); master.gain.value = .95;
+      master.connect(comp); comp.connect(ac.destination);
+      sfx = ac.createGain(); sfx.gain.value = .9; sfx.connect(master);
+      var len = ac.sampleRate * 2;
+      noiseBuf = ac.createBuffer(1, len, ac.sampleRate);
+      var d = noiseBuf.getChannelData(0);
+      for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    }
+    if (ac.state === 'suspended') ac.resume();
+    return ac;
+  }
+
+  function hz(m){ return 440 * Math.pow(2, (m - 69) / 12); }
+  function envExp(param, t, peak, a, d){
+    param.setValueAtTime(.0001, t);
+    param.exponentialRampToValueAtTime(peak, t + a);
+    param.exponentialRampToValueAtTime(.0001, t + a + d);
+  }
+  function noise(t, dur, out){
+    var s = ac.createBufferSource();
+    s.buffer = noiseBuf; s.loop = true;
+    s.connect(out); s.start(t, Math.random() * 1.5); s.stop(t + dur);
+  }
+  function filt(type, f, q){
+    var b = ac.createBiquadFilter(); b.type = type; b.frequency.value = f; if (q) b.Q.value = q; return b;
+  }
+  function gainNode(out){ var g = ac.createGain(); g.connect(out); return g; }
+
+  function cannonSound(){
+    if (!audio()) return;
+    var t = ac.currentTime + .01;
+    var o = ac.createOscillator(); o.type = 'sine';
+    o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(30, t + .7);
+    var g = gainNode(sfx); envExp(g.gain, t, 1, .004, 1); o.connect(g); o.start(t); o.stop(t + 1.1);
+    var lp = filt('lowpass', 3200); lp.frequency.setValueAtTime(3200, t); lp.frequency.exponentialRampToValueAtTime(180, t + 1.3);
+    var g2 = gainNode(sfx); envExp(g2.gain, t, .95, .003, 1.4); lp.connect(g2); noise(t, 1.5, lp);
+    var hp = filt('highpass', 2200); var g3 = gainNode(sfx); envExp(g3.gain, t, .7, .001, .09); hp.connect(g3); noise(t, .12, hp);
+    var dl = ac.createDelay(1); dl.delayTime.value = .34;
+    var fb = ac.createGain(); fb.gain.value = .28;
+    var ef = filt('lowpass', 700);
+    g2.connect(dl); dl.connect(ef); ef.connect(fb); fb.connect(dl); ef.connect(sfx);
+    setTimeout(function(){ try { g2.disconnect(dl); ef.disconnect(); } catch(e){} }, 3500);
+  }
+
+  function whistle(dur){
+    if (!audio()) return;
+    var t = ac.currentTime + .01;
+    var o = ac.createOscillator(); o.type = 'sine';
+    o.frequency.setValueAtTime(450 + Math.random() * 150, t);
+    o.frequency.exponentialRampToValueAtTime(1500 + Math.random() * 500, t + dur);
+    var g = gainNode(sfx);
+    g.gain.setValueAtTime(.0001, t);
+    g.gain.exponentialRampToValueAtTime(.05, t + .08);
+    g.gain.setValueAtTime(.05, t + dur * .8);
+    g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    o.connect(g); o.start(t); o.stop(t + dur + .05);
+    var bp = filt('bandpass', 3000, 1.5); var g2 = gainNode(sfx);
+    g2.gain.setValueAtTime(.0001, t); g2.gain.exponentialRampToValueAtTime(.04, t + .1); g2.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    bp.connect(g2); noise(t, dur, bp);
+  }
+
+  function bangSound(){
+    if (!audio()) return;
+    var t = ac.currentTime + .005;
+    var lp = filt('lowpass', 2400); lp.frequency.setValueAtTime(2400, t); lp.frequency.exponentialRampToValueAtTime(260, t + .9);
+    var g = gainNode(sfx); envExp(g.gain, t, .75, .003, 1); lp.connect(g); noise(t, 1.1, lp);
+    var o = ac.createOscillator(); o.type = 'sine';
+    o.frequency.setValueAtTime(85, t); o.frequency.exponentialRampToValueAtTime(38, t + .45);
+    var g2 = gainNode(sfx); envExp(g2.gain, t, .55, .003, .55); o.connect(g2); o.start(t); o.stop(t + .7);
+    var hp = filt('highpass', 3500);
+    var g3 = gainNode(sfx); hp.connect(g3);
+    g3.gain.setValueAtTime(0, t);
+    for (var i = 0; i < 22; i++){
+      var ct = t + .18 + Math.random() * 1.1;
+      var v = .06 + Math.random() * .16;
+      g3.gain.setValueAtTime(v, ct);
+      g3.gain.setValueAtTime(0, ct + .012 + Math.random() * .015);
+    }
+    noise(t, 1.5, hp);
+  }
+
+  var SPB_A = .44, SPB_B = .5;
+  var NOTE = {C:0, D:2, E:4, F:5, G:7, A:9, B:11};
+  function N(s){ return 12 * (+s.slice(1) + 1) + NOTE[s[0]]; }
+  var CH = {
+    C:{v:[60,64,67], b:[48,43]},
+    G:{v:[59,62,67], b:[43,50]},
+    G7:{v:[59,65,67], b:[43,50]},
+    F:{v:[57,60,65], b:[41,48]}
+  };
+
+  function brass(out, t, m, dur, vel){
+    var f = hz(m);
+    var lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 2.5;
+    lp.frequency.setValueAtTime(450, t);
+    lp.frequency.linearRampToValueAtTime(900 + 2600 * vel, t + .05);
+    lp.frequency.linearRampToValueAtTime(1000 + 1300 * vel, t + Math.max(.1, dur));
+    var g = gainNode(out);
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(.15 * vel, t + .03);
+    g.gain.linearRampToValueAtTime(.11 * vel, t + Math.max(.05, dur - .03));
+    g.gain.linearRampToValueAtTime(0, t + dur + .07);
+    lp.connect(g);
+    for (var k = -1; k <= 1; k += 2){
+      var o = ac.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = k * 7;
+      o.connect(lp); o.start(t); o.stop(t + dur + .1);
+    }
+  }
+  function bass(out, t, m, dur){
+    var lp = filt('lowpass', 750); var g = gainNode(out); lp.connect(g);
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.34, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    var o1 = ac.createOscillator(); o1.type = 'triangle'; o1.frequency.value = hz(m);
+    var o2 = ac.createOscillator(); o2.type = 'square'; o2.frequency.value = hz(m);
+    var g2 = ac.createGain(); g2.gain.value = .22; o2.connect(g2); g2.connect(lp); o1.connect(lp);
+    o1.start(t); o2.start(t); o1.stop(t + dur + .05); o2.stop(t + dur + .05);
+  }
+  function snare(out, t, vel){
+    var hp = filt('highpass', 1000); var g = gainNode(out); hp.connect(g); envExp(g.gain, t, .26 * vel, .002, .13); noise(t, .17, hp);
+    var o = ac.createOscillator(); o.type = 'triangle'; o.frequency.value = 185;
+    var g2 = gainNode(out); envExp(g2.gain, t, .17 * vel, .002, .07); o.connect(g2); o.start(t); o.stop(t + .1);
+  }
+  function kick(out, t){
+    var o = ac.createOscillator(); o.type = 'sine';
+    o.frequency.setValueAtTime(125, t); o.frequency.exponentialRampToValueAtTime(46, t + .12);
+    var g = gainNode(out); envExp(g.gain, t, .55, .003, .24); o.connect(g); o.start(t); o.stop(t + .3);
+  }
+  function crash(out, t){
+    var hp = filt('highpass', 4800); var g = gainNode(out); hp.connect(g); envExp(g.gain, t, .11, .004, 1.6); noise(t, 1.7, hp);
+  }
+  function glock(out, t, m){
+    var o = ac.createOscillator(); o.type = 'sine'; o.frequency.value = hz(m);
+    var g = gainNode(out); envExp(g.gain, t, .085, .002, .6); o.connect(g); o.start(t); o.stop(t + .65);
+    var o2 = ac.createOscillator(); o2.type = 'sine'; o2.frequency.value = hz(m) * 2.76;
+    var g2 = gainNode(out); envExp(g2.gain, t, .025, .002, .25); o2.connect(g2); o2.start(t); o2.stop(t + .3);
+  }
+
+  var EV = [], LOOP = 0;
+  function at(sec, fn){ EV.push({t:sec, p:fn}); }
+
+  (function build(){
+    var A = [['C5',.75],['C5',.25],['C5',.5],['E5',.5],['G5',1],['E5',1],
+             ['F5',.75],['E5',.25],['D5',1],['B4',1],['G4',1],
+             ['C5',.75],['C5',.25],['C5',.5],['E5',.5],['G5',1],['C6',1],
+             ['B5',.75],['A5',.25],['G5',2],['G5',.5],['G5',.5],
+             ['A5',1],['F5',1],['A5',.75],['G5',.25],['F5',1],
+             ['G5',1],['E5',1],['C5',2],
+             ['D5',.75],['D5',.25],['E5',.5],['F5',.5],['G5',1],['B4',1],
+             ['C5',2],[null,2]];
+    var chA = ['C','G','C','G','F','C','G','C'];
+    var base = 0, b = 0;
+    A.forEach(function(n){
+      if (n[0]){
+        var m = N(n[0]), st = base + b * SPB_A, d = n[1] * SPB_A * .9, v = (b % 4 === 0) ? 1 : .85;
+        at(st, function(t, o){ brass(o, t, m, d, v); brass(o, t, m - 12, d, .45); });
+      }
+      b += n[1];
+    });
+    chA.forEach(function(c, i){
+      var s = base + i * 4 * SPB_A, ch = CH[c];
+      at(s, function(t, o){ bass(o, t, ch.b[0], SPB_A * 1.6); kick(o, t); });
+      at(s + 2 * SPB_A, function(t, o){ bass(o, t, ch.b[1], SPB_A * 1.6); kick(o, t); });
+      [1, 3].forEach(function(bt){ at(s + bt * SPB_A, function(t, o){ ch.v.forEach(function(m){ brass(o, t, m, SPB_A * .45, .36); }); }); });
+      if (i === 0) at(s, function(t, o){ crash(o, t); });
+      if (i === 7){
+        for (var k = 0; k < 8; k++) (function(k){ at(s + (2 + k * .25) * SPB_A, function(t, o){ snare(o, t, .45 + k * .07); }); })(k);
+        at(s, function(t, o){ snare(o, t, 1); });
+      } else {
+        [[0,1],[1,.6],[1.5,.5],[2,.8],[3,.6],[3.5,.5]].forEach(function(h){ at(s + h[0] * SPB_A, function(t, o){ snare(o, t, h[1]); }); });
+        if (i === 3) at(s + 3.75 * SPB_A, function(t, o){ snare(o, t, .5); });
+      }
+    });
+    base = 32 * SPB_A;
+
+    var B = [['G4',.75],['G4',.25],
+             ['A4',1],['G4',1],['C5',1],
+             ['B4',2],['G4',.75],['G4',.25],
+             ['A4',1],['G4',1],['D5',1],
+             ['C5',2],['G4',.75],['G4',.25],
+             ['G5',1],['E5',1],['C5',1],
+             ['B4',1],['A4',1],['F5',.75],['F5',.25],
+             ['E5',1],['C5',1],['D5',1],
+             ['C5',3]];
+    b = 0;
+    B.forEach(function(n){
+      var m = N(n[0]), st = base + b * SPB_B, d = n[1] * SPB_B * .9, v = ((b - 1) % 3 === 0) ? 1 : .85;
+      at(st, function(t, o){ brass(o, t, m, d, v); brass(o, t, m + 12, d, .3); glock(o, t, m + 12); });
+      b += n[1];
+    });
+    at(base, function(t, o){ snare(o, t, .5); });
+    at(base + .5 * SPB_B, function(t, o){ snare(o, t, .6); });
+    at(base + .75 * SPB_B, function(t, o){ snare(o, t, .7); });
+    var chB = [['C'],['G7'],['G7'],['C'],['C'],['F'],['C','C','G7'],['C']];
+    chB.forEach(function(c, i){
+      var s = base + (1 + i * 3) * SPB_B;
+      var c0 = CH[c[0]];
+      at(s, function(t, o){ bass(o, t, c0.b[0], SPB_B * 1.2); kick(o, t); if (i === 0 || i === 4) crash(o, t); });
+      [1, 2].forEach(function(bt){
+        var cc = CH[c[bt] || c[0]];
+        at(s + bt * SPB_B, function(t, o){ cc.v.forEach(function(m){ brass(o, t, m, SPB_B * .4, .34); }); snare(o, t, .45); });
+      });
+      if (i === 7){
+        for (var k = 0; k < 8; k++) (function(k){ at(s + (1 + k * .25) * SPB_B, function(t, o){ snare(o, t, .4 + k * .08); }); })(k);
+      }
+    });
+    LOOP = base + 25 * SPB_B;
+    EV.sort(function(a, b){ return a.t - b.t; });
+  })();
+
+  var music = {on:false, bus:null, timer:null, idx:0, start:0};
+  var dock = document.getElementById('dock');
+  var mbtn = document.getElementById('music');
+  var touched = false;
+
+  function sched(){
+    var ahead = ac.currentTime + .2;
+    while (true){
+      var ev = EV[music.idx], tt = music.start + ev.t;
+      if (tt > ahead) break;
+      if (tt > ac.currentTime - .05) ev.p(tt, music.bus);
+      music.idx++;
+      if (music.idx >= EV.length){ music.idx = 0; music.start += LOOP; }
+    }
+  }
+  function startMusic(){
+    if (!audio() || music.on) return;
+    music.bus = ac.createGain();
+    music.bus.gain.setValueAtTime(.0001, ac.currentTime);
+    music.bus.gain.exponentialRampToValueAtTime(.6, ac.currentTime + .4);
+    music.bus.connect(master);
+    music.idx = 0; music.start = ac.currentTime + .12; music.on = true;
+    sched(); music.timer = setInterval(sched, 25);
+    dock.classList.add('on'); mbtn.setAttribute('aria-pressed', 'true'); mbtn.setAttribute('aria-label', 'Выключить музыку');
+  }
+  function stopMusic(){
+    if (!music.on) return;
+    clearInterval(music.timer); music.on = false;
+    var bus = music.bus, t = ac.currentTime;
+    bus.gain.cancelScheduledValues(t); bus.gain.setValueAtTime(Math.max(bus.gain.value, .0001), t);
+    bus.gain.exponentialRampToValueAtTime(.0001, t + .25);
+    setTimeout(function(){ try { bus.disconnect(); } catch(e){} }, 400);
+    dock.classList.remove('on'); mbtn.setAttribute('aria-pressed', 'false'); mbtn.setAttribute('aria-label', 'Включить праздничный марш');
+  }
+  mbtn.addEventListener('click', function(){ touched = true; music.on ? stopMusic() : startMusic(); });
+  document.addEventListener('visibilitychange', function(){
+    if (!ac) return;
+    if (document.hidden) ac.suspend(); else ac.resume();
+  });
+
+  var cv = document.getElementById('fx');
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, parts = [], rockets = [], running = false;
+  var confetti = ['#e8a93a','#ffd57a','#efe9d6','#c9442c','#8fbf5a','#6f7e4a'];
+  var PALS = [
+    ['#ffd57a','#e8a93a','#fff3d0'],
+    ['#ff7a5c','#c9442c','#ffd2c2'],
+    ['#b8f28a','#8fbf5a','#f3ffe0'],
+    ['#9fd0ff','#5f8fd9','#e8f3ff'],
+    ['#ffd57a','#ff7a5c','#9fd0ff','#b8f28a']
+  ];
+
+  function resize(){
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function loop(){ if (!running){ running = true; requestAnimationFrame(tick); } }
+
+  function burst(x, y, n, dir, spread, power, pal, opts){
+    opts = opts || {};
+    for (var i = 0; i < n; i++){
+      var a = dir + (Math.random() - .5) * spread;
+      var s = power * (opts.even ? (.85 + Math.random() * .3) : (.45 + Math.random() * .75));
+      parts.push({
+        x:x, y:y, vx:Math.cos(a) * s, vy:Math.sin(a) * s,
+        w:5 + Math.random() * 6, h:3 + Math.random() * 5,
+        rot:Math.random() * 6.28, vr:(Math.random() - .5) * .35,
+        c:pal[(Math.random() * pal.length) | 0],
+        life:0, max:(opts.max || 90) + Math.random() * 70,
+        round:opts.spark || Math.random() < .3, spark:!!opts.spark,
+        g:opts.g != null ? opts.g : .16, drag:opts.drag || .985
+      });
+    }
+    loop();
+  }
+
+  function explode(x, y){
+    var pal = PALS[(Math.random() * PALS.length) | 0];
+    burst(x, y, 90, 0, Math.PI * 2, 6.2, pal, {spark:true, even:true, g:.07, drag:.965, max:60});
+    burst(x, y, 26, 0, Math.PI * 2, 2.4, ['#fff3d0'], {spark:true, g:.05, drag:.95, max:40});
+    bangSound();
+  }
+
+  function launch(tx, ty, delay){
+    setTimeout(function(){
+      var sx = tx + (Math.random() - .5) * 90;
+      var dur = 40 + Math.random() * 14;
+      rockets.push({sx:sx, sy:H + 10, tx:tx, ty:ty, x:sx, y:H + 10, t:0, dur:dur});
+      whistle(dur / 60);
+      loop();
+    }, delay);
+  }
+
+  function salute(n){
+    for (var k = 0; k < n; k++){
+      launch(W * (.14 + Math.random() * .72), H * (.12 + Math.random() * .28), k * 340);
+    }
+  }
+
+  function tick(){
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    for (var j = rockets.length - 1; j >= 0; j--){
+      var r = rockets[j];
+      r.t++;
+      var p = Math.min(1, r.t / r.dur), e = 1 - (1 - p) * (1 - p);
+      r.x = r.sx + (r.tx - r.sx) * p; r.y = r.sy + (r.ty - r.sy) * e;
+      parts.push({x:r.x, y:r.y, vx:(Math.random() - .5) * .5, vy:Math.random() * .8, w:2, h:2, rot:0, vr:0, c:'#ffcf7a', life:0, max:20 + Math.random() * 10, round:true, spark:true, g:.02, drag:.98});
+      ctx.globalAlpha = 1; ctx.fillStyle = '#fff3d0';
+      ctx.beginPath(); ctx.arc(r.x, r.y, 2.4, 0, 6.283); ctx.fill();
+      if (p >= 1){ rockets.splice(j, 1); explode(r.tx, r.ty); }
+    }
+    for (var i = parts.length - 1; i >= 0; i--){
+      var q = parts[i];
+      q.vy += q.g; q.vx *= q.drag; q.vy *= q.drag;
+      q.x += q.vx; q.y += q.vy; q.rot += q.vr; q.life++;
+      if (q.life > q.max || q.y > H + 30){ parts.splice(i, 1); continue; }
+      var a = Math.max(0, 1 - q.life / q.max);
+      ctx.globalAlpha = q.spark ? a * (Math.random() < .15 ? .4 : 1) : a;
+      ctx.fillStyle = q.c;
+      if (q.spark){ ctx.beginPath(); ctx.arc(q.x, q.y, 1.6, 0, 6.283); ctx.fill(); continue; }
+      ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(q.rot);
+      if (q.round){ ctx.beginPath(); ctx.arc(0, 0, q.h / 1.6, 0, 6.283); ctx.fill(); }
+      else ctx.fillRect(-q.w / 2, -q.h / 2, q.w, q.h * Math.abs(Math.cos(q.rot * 2)) + 1);
+      ctx.restore();
+    }
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
+    if (parts.length || rockets.length) requestAnimationFrame(tick);
+    else { running = false; ctx.clearRect(0, 0, W, H); }
+  }
+
+  var tank = document.getElementById('tank');
+  var page = document.getElementById('page');
+
+  function shot(){
+    cannonSound();
+    if (!reduce){
+      tank.classList.remove('firing'); page.classList.remove('shake');
+      void tank.getBoundingClientRect();
+      tank.classList.add('firing'); page.classList.add('shake');
+    }
+    var m = document.getElementById('muzzle').getBoundingClientRect();
+    burst(m.right, m.top + m.height / 2, 110, -0.25, 1.1, 13, confetti);
+    try { if (navigator.vibrate) navigator.vibrate(80); } catch(e){}
+    setTimeout(function(){ salute(reduce ? 2 : 4); }, 420);
+  }
+
+  document.getElementById('fire').addEventListener('click', function(){
+    audio();
+    if (!touched){ touched = true; startMusic(); }
+    shot();
+    setTimeout(function(){
+      document.getElementById('letter').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+    }, 2600);
+  });
+
+  document.getElementById('salvo').addEventListener('click', function(){
+    audio();
+    salute(reduce ? 2 : 6);
+  });
+
+  var bg = document.getElementById('bg'), bx = bg.getContext('2d');
+  var BW = 0, BH = 0, embers = [], far = [], nextFar = 1500;
+  function bgResize(){
+    var d = Math.min(window.devicePixelRatio || 1, 1.5);
+    BW = window.innerWidth; BH = window.innerHeight;
+    bg.width = BW * d; bg.height = BH * d;
+    bx.setTransform(d, 0, 0, d, 0, 0);
+  }
+  function ember(init){
+    return {
+      x:Math.random() * BW, y:init ? Math.random() * BH : BH + 10,
+      r:.6 + Math.random() * 1.8, vy:-(.25 + Math.random() * .6),
+      ph:Math.random() * 6.28, amp:.3 + Math.random() * .7,
+      a:.3 + Math.random() * .5, c:Math.random() < .75 ? '232,169,58' : '214,90,52'
+    };
+  }
+  bgResize();
+  window.addEventListener('resize', bgResize);
+  var EN = BW < 600 ? 40 : 64;
+  for (var e = 0; e < EN; e++) embers.push(ember(true));
+
+  function drawEmbers(){
+    for (var i = 0; i < embers.length; i++){
+      var em = embers[i];
+      var fade = Math.min(1, Math.max(0, em.y) / (BH * .35));
+      bx.fillStyle = 'rgba(' + em.c + ',' + (em.a * fade * .18) + ')';
+      bx.beginPath(); bx.arc(em.x, em.y, em.r * 4, 0, 6.283); bx.fill();
+      bx.fillStyle = 'rgba(' + em.c + ',' + (em.a * fade) + ')';
+      bx.beginPath(); bx.arc(em.x, em.y, em.r, 0, 6.283); bx.fill();
+    }
+  }
+
+  function bgTick(ts){
+    bx.clearRect(0, 0, BW, BH);
+    for (var i = 0; i < embers.length; i++){
+      var em = embers[i];
+      em.y += em.vy; em.ph += .02; em.x += Math.sin(em.ph) * em.amp * .5;
+      if (em.y < -12) embers[i] = ember(false);
+    }
+    drawEmbers();
+    if (ts > nextFar){
+      nextFar = ts + 3000 + Math.random() * 4000;
+      var fx = BW * (.1 + Math.random() * .8), fy = BH * (.08 + Math.random() * .22);
+      var pal = PALS[(Math.random() * PALS.length) | 0];
+      for (var k = 0; k < 46; k++){
+        var ang = Math.random() * 6.283, sp = 1.3 + Math.random() * .5;
+        far.push({x:fx, y:fy, vx:Math.cos(ang) * sp, vy:Math.sin(ang) * sp, c:pal[k % pal.length], life:0, max:70 + Math.random() * 40});
+      }
+    }
+    bx.globalCompositeOperation = 'lighter';
+    for (var j = far.length - 1; j >= 0; j--){
+      var f = far[j];
+      f.vy += .02; f.vx *= .975; f.vy *= .975; f.x += f.vx; f.y += f.vy; f.life++;
+      if (f.life > f.max){ far.splice(j, 1); continue; }
+      bx.globalAlpha = (1 - f.life / f.max) * .5;
+      bx.fillStyle = f.c;
+      bx.beginPath(); bx.arc(f.x, f.y, 1.3, 0, 6.283); bx.fill();
+    }
+    bx.globalAlpha = 1;
+    bx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(bgTick);
+  }
+  if (reduce) drawEmbers(); else requestAnimationFrame(bgTick);
+})();
+</script>
+</body>
+</html>
